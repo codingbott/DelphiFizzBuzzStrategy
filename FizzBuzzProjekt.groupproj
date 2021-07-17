@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{506E80A9-2478-4794-9097-EE0CEC81D4AF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="FizzBuzz.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Tests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FizzBuzz">
+        <MSBuild Projects="FizzBuzz.dproj"/>
+    </Target>
+    <Target Name="FizzBuzz:Clean">
+        <MSBuild Projects="FizzBuzz.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FizzBuzz:Make">
+        <MSBuild Projects="FizzBuzz.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Tests">
+        <MSBuild Projects="Tests.dproj"/>
+    </Target>
+    <Target Name="Tests:Clean">
+        <MSBuild Projects="Tests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Tests:Make">
+        <MSBuild Projects="Tests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FizzBuzz;Tests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FizzBuzz:Clean;Tests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FizzBuzz:Make;Tests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
