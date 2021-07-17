@@ -36,7 +36,7 @@ type
 
     [SetupFixture]
     procedure Setup();
-    [TeardwonFixture]
+    [TeardownFixture]
     procedure Down();
   end;
 
